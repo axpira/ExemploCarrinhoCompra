@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition>
+		<p:panel id="painelCarrinho" style="font-size: small; bottom: 0px; right: 0px; position: absolute; margin: 0px; padding: 0px; border: 0px">
+			<h:form>
+				<p:panelGrid id="carrinhoPainelGrid" columns="3" style="border: 0px;">
+					<h:outputText value="Total Itens: "/>
+					<h:outputText value="#{carrinhoMB.quantidadeItens}" />
+					<h:commandLink action="carrinhoPedido" value="Carrinho"/>
+				</p:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:composition>
+</h:body>
+</html>
+
+
+

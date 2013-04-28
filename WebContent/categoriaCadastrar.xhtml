@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition>
+
+		<h:form id="form" rendered="#{usuarioMB.administrador}">
+			<h:panelGrid columns="4" border="0" style="border: none">
+				<p:outputLabel for="nome">Nome: </p:outputLabel>
+				<p:inputText id="nome" value="#{categoriaMB.categoria.nome}" />
+				<p:commandLink action="#{categoriaMB.gravar}" value="Gravar" update="form :table :msg" />
+
+				<p:message for="nome" showDetail="true" autoUpdate="true" />
+			</h:panelGrid>
+		</h:form>
+	</ui:composition>
+</h:body>
+</html>
+
+
+

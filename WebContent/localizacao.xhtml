@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="layout.xhtml">
+		<ui:define name="javascript">
+			<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>  
+		</ui:define>
+		
+		<ui:define name="conteudo">
+			<h:form>
+				<p:gmap center="-23.574970, -46.586582" zoom="18" type="HYBRID" style="width:600px;height:400px" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
+
+
+

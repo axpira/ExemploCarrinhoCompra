@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="layout.xhtml">
+
+		<ui:define name="conteudo">
+			<h:form>
+				<p:dataTable 
+					var="item" 
+					value="#{carrinhoMB.carrinho.itens}" 
+					rows="9"  
+	                id="tabelaPedido"
+	                >  
+	
+			        <p:column headerText="Quantidade" width="5" >  
+			            <p:spinner value="#{item.quantidade}" min="1" required="true" size="3">  
+							<p:ajax update="@form" process="@this" />  
+		                </p:spinner>   
+			        </p:column>    			
+			        <p:column headerText="Valor" width="50">  
+			            <h:outputText value="#{item.valor}" >
+							<f:convertNumber locale="pt_BR" type="currency" />
+			            </h:outputText>  
+			        </p:column>    			
+			        <p:column headerText="Total">  
+			            <h:outputText value="#{item.total}" >  
+							<f:convertNumber locale="pt_BR" type="currency" />
+						</h:outputText>
+			        </p:column>    			
+			        
+			        <p:column headerText="Nome">  
+			            <h:outputText value="#{item.produto.nome}" />  
+			        </p:column>    			
+			        <p:column headerText="Imagem">  
+			            <h:graphicImage value="#{item.produto.imagem}" width="50"/> 
+			        </p:column>    			
+			        <p:column headerText="Categoria">  
+			            <h:outputText value="#{item.produto.categoria.nome}" />  
+			        </p:column>
+			        <f:facet name="footer">  
+			        	Valor total da compra:
+			        	<h:outputText value="#{carrinhoMB.carrinho.total}" >
+							<f:convertNumber locale="pt_BR" type="currency" />
+						</h:outputText>			        	  
+					</f:facet>  
+	  			</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
+
+
+

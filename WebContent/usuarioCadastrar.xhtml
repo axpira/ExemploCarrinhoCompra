@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="layout.xhtml">
+
+		<ui:define name="conteudo">
+			<h:form>
+				<h:panelGrid columns="3">
+					<p:outputLabel for="nome">Nome: </p:outputLabel>
+					<p:inputText id="nome" value="#{usuarioMB.usuario.nome}" />
+					<p:message for="nome" showDetail="true" autoUpdate="true" />
+
+					<p:outputLabel for="login">Login: </p:outputLabel>
+					<p:inputText id="login" value="#{usuarioMB.usuario.login}" disabled="#{usuarioMB.usuarioLogado!=null}"/>
+					<p:message for="login" showDetail="true" autoUpdate="true" />
+					
+					<p:outputLabel for="senha">Senha: </p:outputLabel>
+					<p:password id="senha" value="#{usuarioMB.usuario.senha}" />
+					<p:message for="senha" showDetail="true" autoUpdate="true" />
+					
+					<p:outputLabel for="email">Email: </p:outputLabel>
+					<p:inputText id="email" value="#{usuarioMB.usuario.email}" />
+					<p:message for="email" showDetail="true" autoUpdate="true" />
+
+					<p:commandButton action="#{usuarioMB.cadastrar}" value="Gravar" update="@form"/>
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
+
+
+

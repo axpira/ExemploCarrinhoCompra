@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:ui="http://java.sun.com/jsf/facelets" 
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:p="http://primefaces.org/ui"
+		>
+	<h:body>
+	
+		<ui:composition>
+			<ui:include src="carrinho.xhtml" />
+			<p:dock position="top" >  
+			    <p:menuitem value="Index" url="index.jsf" icon="images/dock/linux.jpg"/>  
+			    <p:menuitem value="Teste" url="teste.jsf" icon="images/dock/linux.jpg" />  
+			    <p:menuitem value="Localizacao" url="localizacao.jsf" icon="images/dock/linux.jpg"/>  
+			</p:dock>
+			 
+			<ui:include src="pesquisar.xhtml" />
+			<ui:include src="login.xhtml" />
+		</ui:composition>
+	</h:body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="layout.xhtml">
+
+		<ui:define name="conteudo">
+			<h:form>
+				<p:dataGrid 
+					var="produto" 
+					value="#{produtoMB.lazyProdutosDataModel}" 
+					paginator="true" 
+					columns="3"
+					rows="9"  
+	                paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"  
+	                rowsPerPageTemplate="3,6,9,12,24,48,96" 
+	                selectionMode="single" 
+	                id="tabelaProduto" 
+	                lazy="true">  
+	
+					
+					<p:panel header="#{produto.categoria.nome}" style="text-align:center">  
+						<h:panelGrid columns="1" style="width:100%">
+							<p:graphicImage value="/images/produtos/#{produto.imagem}" width="50px"/> 
+							<h:outputText value="#{produto.nome}" />
+							<h:outputText value="#{produto.valor}">
+								<f:convertNumber pattern="R$ #0.00" /> 
+							</h:outputText>
+							<h:commandButton value="Teste" action="#{produtoMB.adicionarNoCarrinho}" >
+								<f:setPropertyActionListener value="#{produto}" target="#{produtoMB.produtoSelecionado}" />
+							</h:commandButton>
+							<p:commandButton value="Teste 1" action="#{produtoMB.adicionarNoCarrinho}" update=":msg,:painelCarrinho" >
+								<f:setPropertyActionListener value="#{produto}" target="#{produtoMB.produtoSelecionado}" />
+							</p:commandButton>
+						</h:panelGrid>
+			        </p:panel>
+	  			</p:dataGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
+
+
+

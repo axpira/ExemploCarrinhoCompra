@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition>
+		<p:panel id="painelLogin" style="font-size: small; top: 0px; right: 0px; position: absolute; margin: 0px; padding: 0px; border: 0px">
+			<h:form rendered="#{usuarioMB.usuarioLogado == null}">
+				<p:panelGrid id="loginPainelGrid" columns="8" style="border: 0px;" styleClass="login">
+					<p:outputLabel for="loginNome" value="Nome: "/>
+					<p:inputText id="loginNome" value="#{usuarioMB.usuarioLogin}" style="width: 100px;">
+						<f:validateRequired />
+					</p:inputText>
+					<p:message for="loginNome" />
+					<p:outputLabel for="loginSenha" value="Senha: "/>
+					<p:password id="loginSenha" value="#{usuarioMB.usuarioSenha}" style="width: 100px;">
+						<f:validateRequired />
+					</p:password>
+					<p:message for="loginSenha" />
+					<p:commandButton action="#{usuarioMB.login}" value="Login" ajax="false" />
+					<p:commandButton action="#{usuarioMB.usuarioCadastrar}" value="Cadastrar" ajax="false" immediate="true"/>
+				</p:panelGrid>
+			</h:form>
+			<h:form rendered="#{usuarioMB.usuarioLogado != null}">
+				<p:panelGrid columns="4" >
+					<p:outputLabel value="#{usuarioMB.usuarioLogado.nome}"/>
+					<p:outputLabel value="#{usuarioMB.usuarioLogado.administrador}"/>
+					<p:commandLink action="usuarioCadastrar" value="Editar" ajax="false" />
+					<p:commandLink action="#{usuarioMB.logout}" value="Logout" ajax="false" />
+				</p:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:composition>
+</h:body>
+</html>
+
+
+
