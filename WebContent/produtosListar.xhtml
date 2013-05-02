@@ -29,12 +29,10 @@
 							<h:outputText value="#{produto.valor}">
 								<f:convertNumber pattern="R$ #0.00" /> 
 							</h:outputText>
-							<h:commandButton value="Teste" action="#{produtoMB.adicionarNoCarrinho}" >
+							
+							<p:commandLink value="Comprar" action="#{produtoMB.adicionarNoCarrinho}" update=":msg,:painelCarrinho" >
 								<f:setPropertyActionListener value="#{produto}" target="#{produtoMB.produtoSelecionado}" />
-							</h:commandButton>
-							<p:commandButton value="Teste 1" action="#{produtoMB.adicionarNoCarrinho}" update=":msg,:painelCarrinho" >
-								<f:setPropertyActionListener value="#{produto}" target="#{produtoMB.produtoSelecionado}" />
-							</p:commandButton>
+							</p:commandLink>
 						</h:panelGrid>
 			        </p:panel>
 	  			</p:dataGrid>
