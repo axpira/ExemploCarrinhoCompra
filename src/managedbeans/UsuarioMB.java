@@ -1,17 +1,12 @@
 package managedbeans;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import model.Categoria;
-import model.Produto;
 import model.Usuario;
-import dao.CategoriaDAO;
-import dao.ProdutoDAO;
 import dao.UsuarioDAO;
 
 @ManagedBean
@@ -29,31 +24,10 @@ public class UsuarioMB {
 	@EJB
 	private UsuarioDAO usuarioDAO;
 	
-	@EJB
-	private ProdutoDAO produtoDAO;
-	
-	@EJB
-	private CategoriaDAO categoriaDAO;
-	
 	public UsuarioMB() {
 
 	}
 
-	@PostConstruct
-	private void init(){
-		usuarioDAO.save(new Usuario("Administrador", "admin", "admin", "a@a.com",true));
-		usuarioDAO.save(new Usuario("Guest", "guest", "guest", "g@g.com",false));
-		
-		for (int i=0;i<10;i++) {
-			categoriaDAO.save(new Categoria("Cat " + i));
-		}
-		
-		for (int i=0;i<100;i++) {
-			Categoria cat = categoriaDAO.findByPk((int) (1+Math.round(Math.random()*9)));
-			produtoDAO.save(new Produto("Teste " + i, "linux.jpg" , 1+Math.random()*1000 , cat));
-		}
-	}
-	
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -62,9 +36,6 @@ public class UsuarioMB {
 		this.usuario = usuario;
 	}
 	public String login(){
-//		if (usuarioDAO.findAll().size()<1) {
-//			usuarioDAO.save(new Usuario("Thiago Ferreira", "axpira", "axpira", true));
-//		}
 		
 		this.usuarioLogado = usuarioDAO.login(new Usuario(null, usuarioLogin, usuarioSenha, null, false));
 		FacesContext context = FacesContext.getCurrentInstance();
